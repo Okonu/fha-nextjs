@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const LoginForm = () => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+interface Credentials {
+  email: string;
+  password: string;
+}
 
-  const handleSubmit = (event) => {
+const LoginForm: React.FC = () => {
+  const [credentials, setCredentials] = useState<Credentials>({ email: "", password: "" });
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Handle login logic
   };
