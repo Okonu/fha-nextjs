@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 
-const ResetPasswordForm = () => {
-  const [passwords, setPasswords] = useState({
+interface Passwords {
+  newPassword: string;
+  confirmPassword: string;
+}
+
+const ResetPasswordForm: React.FC = () => {
+  const [passwords, setPasswords] = useState<Passwords>({
     newPassword: "",
     confirmPassword: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPasswords({ ...passwords, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Handle password update logic here
   };

@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 
-const SignUpForm = () => {
-  const [userInfo, setUserInfo] = useState({
+interface UserInfo {
+  fullName: string;
+  email: string;
+  password: string;
+  phone: string;
+  startupName: string;
+}
+
+const SignUpForm: React.FC = () => {
+  const [userInfo, setUserInfo] = useState<UserInfo>({
     fullName: "",
     email: "",
     password: "",
@@ -10,12 +18,12 @@ const SignUpForm = () => {
     startupName: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Handle sign up logic here
   };
